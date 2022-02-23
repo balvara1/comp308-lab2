@@ -1,6 +1,7 @@
 // Load the module dependencies
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const { courseSchema, courseModel } = require('./course.server.model');
 const saltRounds = 10;
 //Define a schema
 const Schema = mongoose.Schema;
@@ -26,7 +27,8 @@ var StudentSchema = new Schema({
 		// Validate the email format
 		match: [/.+\@.+\..+/, "Please fill a valid email address"]
 	},
-    program: String
+    program: String,
+    enrolledCourses: [courseSchema]
 });
 
 //Use a pre-save middleware to hash the password

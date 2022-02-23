@@ -8,11 +8,11 @@ module.exports = function (app) {
     // and list students when /students link is selected
     //app.get("/students",students.requiresLogin,students.list); // go to http://localhost:3000/students
     app.get("/students", students.list);
-    app.post('/', students.create);
+    app.post('/student/create', students.create);
     
     //
     // Set up the 'students' parameterized routes
-    app.route('/students/:studentId')
+    app.route('/student/:studentId')
     .get(students.read)
     //.put(students.update)
     //.delete(students.delete)
@@ -29,4 +29,7 @@ module.exports = function (app) {
     
     // path to a protected page
     //app.get('/welcome',students.welcome);
+    app.route('/students/:courseCode')
+    .get(students.studentsByCourseCode)
+    app.param('courseCode', students.studentsByCourseCode)
 };

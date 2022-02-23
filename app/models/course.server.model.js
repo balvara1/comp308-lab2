@@ -7,3 +7,6 @@ const CourseSchema = new Schema({
     semester: String
 });
 mongoose.model('Course', CourseSchema);
+
+module.exports.courseSchema = CourseSchema;
+module.exports.courseModel = mongoose.model('Course', CourseSchema)
