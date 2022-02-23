@@ -14,7 +14,7 @@ module.exports = function (app) {
     // Set up the 'students' parameterized routes
     app.route('/student/:studentId')
     .get(students.read)
-    //.put(students.update)
+    .put(students.update)
     //.delete(students.delete)
     // Set up the 'studentId parameter middleware
     // All param callbacks will be called before any handler of
