@@ -110,3 +110,15 @@ console.log("getting studentsbycoursecode");
     }
   });
 };
+
+// update student
+//update a user by id
+exports.update = function(req, res, next) {
+  Student.findByIdAndUpdate(req.student.id, req.body, { new: true }, function (err, student) {
+    if (err) {
+      console.log(err);
+      return next(err);
+    }
+    res.json(student);
+  });
+};
