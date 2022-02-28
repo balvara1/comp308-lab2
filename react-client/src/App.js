@@ -14,6 +14,8 @@ import PrivateRoute from './PrivateRoute';
 import { AuthContext } from "./auth";
 import MyProfile from './components/MyProfile';
 import Logout from './components/Logout';
+import AllCourses from './components/AllCourses';
+import Classlist from './components/Classlist';
 
 const theme = createTheme();
 
@@ -118,7 +120,9 @@ export default function App() {
               <Route path="/register" element={<Register showSnackBar={showSnackBar} setTokens={setTokens} />} />
               <Route path="/mycourses" element={<PrivateRoute><EnrolledCourses showSnackBar={showSnackBar} /></PrivateRoute>} />
               <Route path="/myprofile" element={<PrivateRoute><MyProfile showSnackBar={showSnackBar} /></PrivateRoute>} />
-              <Route path="/logout" element={<PrivateRoute><Logout showSnackBar={showSnackBar} clearTokens={clearTokens} /></PrivateRoute>} />
+              <Route path="/logout" element={<PrivateRoute><Logout showSnackBar={showSnackBar} /></PrivateRoute>} />
+              <Route path="/courses" element={<PrivateRoute><AllCourses showSnackBar={showSnackBar} /></PrivateRoute>} />
+              <Route path="/classlist" element={<PrivateRoute><Classlist showSnackBar={showSnackBar} /></PrivateRoute>} />
             </Routes>
           </Layout>
 
