@@ -43,6 +43,10 @@ export default function App() {
     localStorage.setItem("tokens", JSON.stringify(data));
   }
 
+  const clearTokens = () => {
+    setAuthTokens(null);
+  }
+
   const handleSbClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -61,8 +65,20 @@ export default function App() {
       const loginResponse = await axios.post(loginUrl, loginRequest);
 
       console.log(loginResponse);
-      setTokens(loginResponse.data);
-      navigate("/myprofile");
+      console.log(loginResponse.data);
+
+      const responseData = loginResponse.data;
+
+      if (responseData.data === null && responseData.status === 'error') {
+        console.log('error found on login');
+        const errorMsg = loginResponse.data.message;
+        showSnackBar({message: errorMsg, severity: 'error'});
+      } else {
+        console.log('no error found on login');
+        setTokens(loginResponse.data);
+        navigate("/myprofile");
+      }
+
     } catch(e) {
       console.log('error trying to login -> ', e);
     }
@@ -102,7 +118,7 @@ export default function App() {
               <Route path="/register" element={<Register showSnackBar={showSnackBar} setTokens={setTokens} />} />
               <Route path="/mycourses" element={<PrivateRoute><EnrolledCourses showSnackBar={showSnackBar} /></PrivateRoute>} />
               <Route path="/myprofile" element={<PrivateRoute><MyProfile showSnackBar={showSnackBar} /></PrivateRoute>} />
-              <Route path="/logout" element={<PrivateRoute><Logout showSnackBar={showSnackBar} /></PrivateRoute>} />
+              <Route path="/logout" element={<PrivateRoute><Logout showSnackBar={showSnackBar} clearTokens={clearTokens} /></PrivateRoute>} />
             </Routes>
           </Layout>
 
