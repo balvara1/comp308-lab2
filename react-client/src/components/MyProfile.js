@@ -112,14 +112,29 @@ export default function MyProfile({showSnackBar}) {
 				sbMsg = `Profile update failed`;
 				showSnackBar({message: sbMsg, severity: 'error'});
 			});
-		}
 
-		disableEdit();
+			disableEdit();
+		}
 	}
 
 	const resetErrors = () => {
 		setFirstNameError({error: false, errorMsg: ""});
 		setLastNameError({error: false, errorMsg: ""});
+	}
+
+	const cancelEdit = () => {
+		// reset original values and clear errors
+		setStudentNumber(student.studentNumber);
+		setEmail(student.email);
+		setFirstName(student.firstName);
+		setLastName(student.lastName);
+		setAddress(student.address);
+		setCity(student.city);
+		setPhone(student.phoneNumber || '');
+		setProgram(student.program);
+
+		resetErrors();
+		disableEdit();
 	}
 
 	const enableEdit = () => {
@@ -273,7 +288,7 @@ export default function MyProfile({showSnackBar}) {
 							color="error"
 							variant="contained"
 							endIcon={<HighlightOffOutlinedIcon />}
-							onClick={disableEdit}
+							onClick={cancelEdit}
 						> Cancel </Button>
 					</div>
 					}

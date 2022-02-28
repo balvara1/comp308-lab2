@@ -42,12 +42,12 @@ export default function ClassList(props) {
           >
             <nav aria-label="Course List">
               {studentsInCourse.map((item, idx) => (
-                <ListItem disablePadding>
+                <ListItem disablePadding key={item.id}>
                   <ListItemButton>
                     <ListItemIcon>
                       <PersonIcon />
                     </ListItemIcon>
-                    <ListItemText key={idx}>
+                    <ListItemText>
                       {item.firstName + " " + item.lastName}
                     </ListItemText>
                   </ListItemButton>

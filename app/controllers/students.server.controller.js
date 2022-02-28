@@ -136,7 +136,10 @@ exports.authenticate = function(req, res, next) {
     if (err) {
       return next(err);
     } else {
-      console.log(student)
+      console.log('student response -> ', student);
+      if (student == null) {
+        return res.json({status:"error", message: "Invalid username/password!!!", data: null});
+      }
       // compare passwords
       if(bcrypt.compareSync(password, student.password)) {
         // Create a new token with the user id in the payload

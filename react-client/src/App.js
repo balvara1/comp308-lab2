@@ -45,6 +45,10 @@ export default function App() {
     localStorage.setItem("tokens", JSON.stringify(data));
   }
 
+  const clearTokens = () => {
+    setAuthTokens(null);
+  }
+
   const handleSbClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -63,8 +67,20 @@ export default function App() {
       const loginResponse = await axios.post(loginUrl, loginRequest);
 
       console.log(loginResponse);
-      setTokens(loginResponse.data);
-      navigate("/myprofile");
+      console.log(loginResponse.data);
+
+      const responseData = loginResponse.data;
+
+      if (responseData.data === null && responseData.status === 'error') {
+        console.log('error found on login');
+        const errorMsg = loginResponse.data.message;
+        showSnackBar({message: errorMsg, severity: 'error'});
+      } else {
+        console.log('no error found on login');
+        setTokens(loginResponse.data);
+        navigate("/myprofile");
+      }
+
     } catch(e) {
       console.log('error trying to login -> ', e);
     }
