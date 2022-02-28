@@ -8,6 +8,8 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import SchoolOutlined from '@mui/icons-material/SchoolOutlined';
 import LibraryBooksOutlined from '@mui/icons-material/LibraryBooksOutlined';
+import AccountCircleOutlinedIcon from '@mui/icons-material/AccountCircleOutlined';
+import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined';
 
 const drawerWidth = 200
 
@@ -45,10 +47,21 @@ export default function Layout({ children }) {
 			path: '/mycourses'
 		},
 		{
+			text: 'My Profile',
+			icon: <AccountCircleOutlinedIcon color="primary" />,
+			path: '/myprofile'
+		},
+		{
 			text: 'Students',
 			icon: <SchoolOutlined color="primary" />,
 			path: '/students'
 		},
+		{
+			text: 'Logout',
+			icon: <LogoutOutlinedIcon color="primary" />,
+			path: '/logout'
+		}
+
 	]
 
   return (
