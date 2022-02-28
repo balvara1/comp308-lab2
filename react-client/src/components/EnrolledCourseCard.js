@@ -13,7 +13,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 const courseOptions = [
   'Edit Course',
   'Drop Course',
-  'Student List',
+  'Class List',
 ];
 
 const ITEM_HEIGHT = 20;
