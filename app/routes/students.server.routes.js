@@ -23,9 +23,9 @@ module.exports = function (app) {
     // even if the parameter is matched in multiple routes
     app.param('studentId', students.studentByID);
     // authenticate student
-    //app.post('/signin', students.authenticate);
+    app.post('/login', students.authenticate);
     //app.get('/signout', student.signout);
-    //app.get('/read_cookie', students.isSignedIn);
+    app.get('/read_cookie', students.isSignedIn);
     
     // path to a protected page
     //app.get('/welcome',students.welcome);

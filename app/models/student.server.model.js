@@ -14,7 +14,7 @@ var StudentSchema = new Schema({
 		// Validate the 'password' value length
 		validate: [
 			(password) => password && password.length > 6,
-			'Password should be longer'
+			'Password should be at least 7 characters'
 		]
 	},
     firstName: String,
