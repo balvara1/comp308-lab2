@@ -120,7 +120,7 @@ export default function App() {
               <Route path="/register" element={<Register showSnackBar={showSnackBar} setTokens={setTokens} />} />
               <Route path="/mycourses" element={<PrivateRoute><EnrolledCourses showSnackBar={showSnackBar} /></PrivateRoute>} />
               <Route path="/myprofile" element={<PrivateRoute><MyProfile showSnackBar={showSnackBar} /></PrivateRoute>} />
-              <Route path="/logout" element={<PrivateRoute><Logout showSnackBar={showSnackBar} /></PrivateRoute>} />
+              <Route path="/logout" element={<PrivateRoute><Logout clearTokens={clearTokens} showSnackBar={showSnackBar} /></PrivateRoute>} />
               <Route path="/courses" element={<PrivateRoute><AllCourses showSnackBar={showSnackBar} /></PrivateRoute>} />
               <Route path="/classlist" element={<PrivateRoute><Classlist showSnackBar={showSnackBar} /></PrivateRoute>} />
             </Routes>
